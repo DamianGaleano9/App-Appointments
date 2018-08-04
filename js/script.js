@@ -46,30 +46,39 @@ var users = [
 
 window.addEventListener('load', function() {
 
+    function search () {
+
+            //Get Hobby
+    
+            var hobbyField = document.getElementById('hobby');
+            var hobby = hobbyField.value;
+    
+            //Get Gender
+    
+            var genderField = document.getElementById('gender');
+            var selected = genderField.selectedIndex;
+            var gender = genderField.options[selected].value;
+            console.log(gender);
+    
+            var resultsHTML = '';
+            var numUsers = users.length;
+    
+            for(var i = 0; i < numUsers; i++) {
+                resultsHTML +=  '<div class="person-row">\
+                <img src="images/' + users[i].avatar + '"/>\
+                <div class="person-info">\
+                    <div>' + users[i].name + '</div>\
+                    <div>' + users[i].hobby + '</div></div>\
+                    <button>Add as a Friend</button></div>';  
+    
+            }
+    
+                results.innerHTML = resultsHTML;
+            };
+
+
 
     var results = document.getElementById('results');
     var searchBtn = document.getElementById('searchBtn');
-        searchBtn.addEventListener('click', function() {
-
-        //Get Hobby
-
-        var hobbyField = document.getElementById('hobby');
-        var hobby = hobbyField.value;
-
-        //Get Gender
-
-        var genderField = document.getElementById('gender');
-        var selected = genderField.selectedIndex;
-        var gender = genderField.options[selected].value;
-        console.log(gender);
-
-        var resultsHTML = '';
-        var numUsers = users.length;
-
-        for(var i = 0; i < numUsers; i++) {
-            resulstHTML = resultsHTML + ' ' + users[i].name;
-        }
-
-            results.innerHTML = resultsHTML;
-        });
+        searchBtn.addEventListener('click', search);
 });
